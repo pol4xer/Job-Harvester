@@ -1,0 +1,34 @@
+# Generic examples. Keep personal search preferences in searches.local.yaml.
+database: data/jobs.sqlite3
+refresh_existing: false
+
+browser:
+  profile_dir: .browser-profile
+  headless: false
+  incognito: false
+  use_uc: false
+  locale_code: en-US
+  window_size: 1440,1000
+  page_load_timeout: 45
+  wait_timeout: 20
+  max_scroll_rounds: 40
+  search_deadline_seconds: 300
+
+defaults:
+  location: Worldwide
+  max_results: 25
+  page_size: 25
+  filters:
+    date_posted: past_week
+    experience_levels: [mid_senior]
+    workplace_types: [remote]
+    employment_types: [full_time, contract]
+    sort_by: recent
+
+searches:
+  - id: senior_python
+    keywords: '"Python Developer" OR "Backend Engineer"'
+  - id: data_engineering
+    keywords: '"Data Engineer" AND Python'
+  - id: browser_automation
+    keywords: '"Browser Automation Engineer" OR "Web Automation Engineer"'

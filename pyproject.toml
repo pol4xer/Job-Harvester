@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "job-harvester"
+version = "0.1.0"
+description = "Scrapy and SeleniumBase pipeline for collecting and exporting job vacancies"
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+  "pydantic>=2.10,<3",
+  "python-dateutil>=2.9.0.post0,<3",
+  "PyYAML>=6.0.2,<7",
+  "Scrapy>=2.13.3,<3",
+  "seleniumbase>=4.39.2,<5",
+]
+
+[dependency-groups]
+dev = [
+  "ruff>=0.16,<1",
+  "pytest>=9.1,<10",
+  "build>=1.2,<2",
+  "setuptools>=75,<84",
+  "pip>=26.2,<27",
+]
+
+[project.scripts]
+job-harvester = "job_harvester.cli:main"
+
+[project.urls]
+Repository = "https://github.com/pol4xer/Job-Harvester"
+Issues = "https://github.com/pol4xer/Job-Harvester/issues"
+
+[tool.setuptools.packages.find]
+include = ["job_harvester*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "UP", "B", "SIM"]
+
+[tool.setuptools.package-data]
+job_harvester = ["resources/*.yaml", "resources/*.jsonl"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q"
